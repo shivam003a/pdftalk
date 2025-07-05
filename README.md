@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📄 pdfTalk — Chat with Your PDF
 
-## Getting Started
+pdfTalk is a modern web application that allows users to upload a PDF and have natural language conversations with its content. Powered by vector embeddings, Pinecone vector database, and transformer models, it delivers contextual answers from your documents.
 
-First, run the development server:
+---
+
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js 14, Tailwind CSS
+- **Backend**: Next.js API (API for file uploads and processing)
+- **Embeddings**: Hugging Face `all-MiniLM-L6-v2`
+- **Vector Store**: Pinecone
+- **PDF Parsing**: `pdf-parse`
+
+---
+
+## 🧠 Features
+
+- 📄 Upload any PDF
+- 🧹 Chunk content intelligently (\~300 tokens)
+- 🤖 Generate embeddings using Hugging Face
+- 🧠 Store and query with Pinecone
+- 💬 Chat interface to query PDF content (RAG-based)
+
+---
+
+<!-- ## 📂 Project Structure
+
+```
+/pdfTalk
+│
+├── /app                 → Next.js frontend (chat UI)
+├── /routes              → Express.js API routes
+│   └── upload.js        → Handles PDF upload, parsing, embedding, and Pinecone upsert
+├── /uploads             → Temporary storage for PDFs
+├── /utils               → Chunking, tokenizer helpers, etc.
+├── .env                 → Environment variables (keys, Pinecone config)
+└── README.md
+``` -->
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/shivam003a/pdftalk.git
+cd pdftalk
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or if using Yarn
+yarn install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the root:
+
+```env
+HF_API_KEY=your_huggingface_api_key
+PINECONE_API_KEY=your_pinecone_api_key
+PINECONE_INDEX_NAME=your_index_name
+PINECONE_ENVIRONMENT=your_environment_name
+```
+
+> ⚠️ You must create the Pinecone index beforehand or handle dynamic creation in your code.
+
+---
+
+## 💻 Running the App
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🧪 How it Works (Overview)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. User uploads a PDF.
+2. Backend extracts text using `pdf-parse`.
+3. Text is chunked (\~300 tokens using sentence logic).
+4. Chunks are embedded via Hugging Face transformer model.
+5. Embeddings are stored in Pinecone with a unique namespace.
+6. User's chat queries are embedded and searched against relevant vectors.
+7. Retrieved context is passed to an LLM for generating responses.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> _(Insert screenshots of upload UI, chat interface, response flow)_
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🙌 Credits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Hugging Face Transformers
+- Pinecone Vector DB
+- LangChain-inspired logic
