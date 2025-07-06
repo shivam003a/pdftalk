@@ -38,10 +38,10 @@ export default function SignUp() {
 
     return (
         <>
-            <div className="w-screen h-screen bg-primary bg-no-repeat bg-cover flex items-center justify-center">
-                <div className="w-full h-9/10 max-w-[1200px] mx-auto flex items-center justify-center bg-white overflow-hidden">
+            <div className="w-screen h-screen bg-primary bg-no-repeat bg-cover flex items-center justify-center p-2">
+                <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex items-center justify-center bg-white overflow-hidden">
                     {/* left div */}
-                    <div className='w-full h-full flex-1/2 overflow-hidden'>
+                    <div className='w-full h-full flex-1/2 overflow-hidden hidden sm:flex'>
                         <Carousel
                             slides={carouselSlides}
                         />
@@ -52,7 +52,7 @@ export default function SignUp() {
                         <div className='w-full flex items-center justify-end'>
                             <span className='bg-primary text-white rounded-2xl py-2 px-7 font-poppins text-xs'>Sign up</span>
                         </div>
-                        <div className='w-full h-full flex flex-col max-w-8/10 p-4'>
+                        <div className='w-full h-full flex flex-col max-w-9/10 sm:max-w-8/10 p-4'>
                             <div className='flex flex-col gap-1'>
                                 <h1 className='font-poppins text-3xl font-semibold text-primary'>Welcome to pdfTalk!</h1>
                                 <p className='font-poppins text-sm text-gray'>Create your account</p>

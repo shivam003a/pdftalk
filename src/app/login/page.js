@@ -31,10 +31,10 @@ export default function Login() {
 
     return (
         <>
-            <div className="w-screen h-screen bg-secondary bg-no-repeat bg-cover flex items-center justify-center">
-                <div className="w-full max-h-[700px] h-9/10 max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-center bg-white overflow-hidden">
+            <div className="w-screen h-screen bg-secondary bg-no-repeat bg-cover flex items-center justify-center p-2">
+                <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center bg-white overflow-hidden">
                     {/* left div */}
-                    <div className='flex-1/2 w-full h-full overflow-hidden'>
+                    <div className='flex-1/2 w-full h-full overflow-hidden hidden sm:flex'>
                         <Carousel
                             slides={carouselSlides}
                         />
@@ -45,7 +45,7 @@ export default function Login() {
                         <div className='w-full flex items-center justify-end'>
                             <span className='bg-primary text-white rounded-2xl py-2 px-7 font-poppins text-xs'>Log in</span>
                         </div>
-                        <div className='w-full h-full flex flex-col max-w-8/10 p-4'>
+                        <div className='w-full h-full flex flex-col max-w-9/10 sm:max-w-8/10 p-4'>
                             <div className='flex flex-col gap-1'>
                                 <h1 className='font-poppins text-3xl font-semibold text-primary'>Welcome Back to pdfTalk!</h1>
                                 <p className='font-poppins text-sm text-gray'>Log in to your account</p>
