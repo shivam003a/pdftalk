@@ -73,7 +73,7 @@ export default function Login() {
                                 }
                                 <button className='mt-4 bg-primary text-white py-3 px-6 font-poppins text-sm rounded-md'>Log in</button>
                                 <span className='font-poppins text-sm text-center text-primary'>
-                                    Don't have an account?
+                                    {"Don't have an account?"}
                                     <Link href='/signup' className="text-blue-500"> Sign up</Link>
                                 </span>
                             </div>
