@@ -44,8 +44,8 @@ export default function Carousel({ slides }) {
 
                             {/* content */}
                             <div className='relative z-10 w-full h-full flex flex-col gap-2 items-start justify-end px-4 pb-16'>
-                                <span className='text-white font-poppins font-semibold tracking-wider text-3xl'>{slide?.title}</span>
-                                <span className='text-white font-poppins font-light text-sm'>{slide?.description}</span>
+                                <span className='text-s-text font-poppins font-semibold tracking-wider text-3xl'>{slide?.title}</span>
+                                <span className='text-[#cbc9c8] font-poppins font-light text-sm'>{slide?.description}</span>
                             </div>
 
                         </div>
@@ -68,13 +68,13 @@ export default function Carousel({ slides }) {
                     onClick={goPrevious}
                     className='cursor-pointer'
                 >
-                    <CircleArrowLeft color='white' strokeWidth={1} size={26} />
+                    <CircleArrowLeft color='#cbc9c8' strokeWidth={1} size={26} />
                 </button>
                 <button
                     onClick={goNext}
                     className='cursor-pointer'
                 >
-                    <CircleArrowRight color='white' strokeWidth={1} size={26} />
+                    <CircleArrowRight color='#cbc9c8' strokeWidth={1} size={26} />
                 </button>
             </div>
         </div>
