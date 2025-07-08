@@ -31,7 +31,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="w-screen h-screen bg-secondary bg-no-repeat bg-cover flex items-center justify-center p-1">
+            <div className="w-screen h-screen bg-secondary bg-no-repeat bg-cover flex items-center justify-center">
                 <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center bg-white overflow-hidden">
                     {/* left div */}
                     <div className='flex-1/2 w-full h-full overflow-hidden hidden sm:flex'>
@@ -41,13 +41,13 @@ export default function Login() {
                     </div>
 
                     {/* right div */}
-                    <div className='w-full h-full flex-1/2 flex flex-col items-center justify-start bg-white p-6 gap-8'>
+                    <div className='w-full h-full flex-1/2 flex flex-col items-center justify-start bg-off-white p-6 gap-8'>
                         <div className='w-full flex items-center justify-end'>
-                            <span className='bg-primary text-white rounded-2xl py-2 px-7 font-poppins text-xs'>Log in</span>
+                            <span className='bg-s-text text-primary font-semibold rounded-2xl py-2 px-7 font-poppins text-xs'>Log in</span>
                         </div>
                         <div className='w-full h-full flex flex-col max-w-9/10 sm:max-w-8/10 p-4'>
                             <div className='flex flex-col gap-1'>
-                                <h1 className='font-poppins text-3xl font-semibold text-primary'>Welcome Back to pdfTalk!</h1>
+                                <h1 className='font-poppins text-3xl font-semibold text-primary'>Welcome Back to <span className='text-s-text'>pdfTalk!</span></h1>
                                 <p className='font-poppins text-sm text-gray'>Log in to your account</p>
                             </div>
 
@@ -71,10 +71,10 @@ export default function Login() {
                                         />
                                     ))
                                 }
-                                <button className='mt-4 bg-primary text-white py-3 px-6 font-poppins text-sm rounded-md'>Log in</button>
+                                <button className='mt-4 bg-s-text text-primary font-semibold py-3 px-6 font-poppins text-sm rounded-md'>Log in</button>
                                 <span className='font-poppins text-sm text-center text-primary'>
                                     {"Don't have an account?"}
-                                    <Link href='/signup' className="text-blue-500"> Sign up</Link>
+                                    <Link href='/signup' className="text-s-text"> Sign up</Link>
                                 </span>
                             </div>
                         </div>
