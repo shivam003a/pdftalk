@@ -40,7 +40,7 @@ export default function SignUp() {
     return (
         <>
             <div className="w-screen h-screen bg-primary bg-no-repeat bg-cover flex items-center justify-center">
-                <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex items-center justify-center bg-white overflow-hidden">
+                <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex items-center justify-center overflow-hidden">
                     {/* left div */}
                     <div className='w-full h-full flex-1/2 overflow-hidden hidden sm:flex'>
                         <Carousel
@@ -49,7 +49,7 @@ export default function SignUp() {
                     </div>
 
                     {/* right div */}
-                    <div className='w-full h-full flex-1/2 flex flex-col items-center justify-start bg-off-whitex p-6 gap-8'>
+                    <div className='w-full h-full flex-1/2 flex flex-col items-center justify-start bg-off-white p-6 gap-8'>
                         <div className='w-full flex items-center justify-end relative'>
                             <Image
                                 src="/pdftalk_black.png"
