@@ -4,6 +4,7 @@ import Input from '@/components/common/Input'
 import Carousel from '@/components/common/Carousel'
 import { carouselSlides } from '@/utils/carouselSlides'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const signupArray = [
     {
@@ -49,7 +50,15 @@ export default function SignUp() {
 
                     {/* right div */}
                     <div className='w-full h-full flex-1/2 flex flex-col items-center justify-start bg-off-whitex p-6 gap-8'>
-                        <div className='w-full flex items-center justify-end'>
+                        <div className='w-full flex items-center justify-end relative'>
+                            <Image
+                                src="/pdftalk_black.png"
+                                width={84}
+                                height={28}
+                                alt="pdftalk"
+                                priority
+                                className='h-16 absolute -top-5 -left-3 sm:hidden'
+                            />
                             <span className='bg-s-text text-primary font-semibold rounded-2xl py-2 px-7 font-poppins text-xs'>Sign up</span>
                         </div>
                         <div className='w-full h-full flex flex-col max-w-9/10 sm:max-w-8/10 p-4'>
