@@ -43,7 +43,7 @@ export default function Login() {
 
                     {/* right div */}
                     <div className='w-full h-full flex-1/2 flex flex-col items-center justify-start bg-off-white p-6 gap-8'>
-                        <div className='w-full flex items-center justify-end'>
+                        <div className='w-full flex items-center justify-end relative'>
                             <Image
                                 src="/pdftalk_black.png"
                                 width={84}
