@@ -1,0 +1,43 @@
+{
+  "name": "pdftalk",
+  "version": "0.0.1",
+  "description": "a rag based api for chatting with pdfs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "rag",
+    "mern",
+    "pdf",
+    "ai",
+    "llm"
+  ],
+  "author": "Shivam Singh",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/community": "^0.3.49",
+    "@langchain/core": "^0.3.66",
+    "@pinecone-database/pinecone": "^6.1.2",
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.7.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.3.30",
+    "md5-file": "^5.0.0",
+    "mongoose": "^8.16.4",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
