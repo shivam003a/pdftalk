@@ -99,7 +99,7 @@ function Hero() {
             autoPlay
             disablePictureInPicture
           >
-            <source src="/media/pdftalk_sample.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/djp7y38jd/video/upload/v1754313175/pdftalk_sample_b7adsw.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </Modal>
