@@ -16,6 +16,8 @@ import { uploadLimiter, queryDailyLimiter } from './middlewares/rateLimit.middle
 const app = express()
 dotenv.config()
 
+app.set('trust proxy', 1);
+
 // constanst/variables
 const PORT = process.env.PORT || 5000
 
