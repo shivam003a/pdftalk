@@ -81,7 +81,7 @@ export default function Sidebar({ chatId }) {
 
     return (
         <>
-            <aside className={`${showSidebar ? 'w-60' : 'w-10'} h-screen bg-primary transition-all duration-300 linear overflow-hidden flex flex-col`}>
+            <aside className={`${showSidebar ? 'w-60' : 'w-10'} h-dvh bg-primary transition-all duration-300 linear overflow-hidden flex flex-col`}>
                 {/* logo and side button for expanding and contracticting */}
                 <div className='p-2 flex items-center justify-between'>
                     <NavLink to={'/'}>

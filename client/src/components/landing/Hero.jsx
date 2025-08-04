@@ -26,7 +26,7 @@ function Hero() {
         <Navbar />
 
         {/* home */}
-        <div className="relative mx-auto flex flex-col md:flex-row min-h-screen max-w-[1200px] items-center justify-between gap-6 p-3">
+        <div className="relative mx-auto flex flex-col md:flex-row min-h-dvh max-w-[1200px] items-center justify-between gap-6 p-3">
           <motion.div
             key={animationIndex}
             className="flex-8/20 flex justify-center items-center aspect-square"

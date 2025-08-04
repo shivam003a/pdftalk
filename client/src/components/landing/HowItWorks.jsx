@@ -8,7 +8,7 @@ export default function HowItWorks() {
 
     return (
         <div className="bg-primary">
-            <div className="mx-auto flex max-w-[1200px] min-h-screen flex-col items-center justify-start gap-4 p-3">
+            <div className="mx-auto flex max-w-[1200px] min-h-dvh flex-col items-center justify-start gap-4 p-3">
                 <motion.span
                     ref={ref}
                     className="text-s-text font-poppins my-8 text-4xl font-semibold"

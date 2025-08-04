@@ -91,14 +91,14 @@ export default function ChatInterface({ chatId }) {
     }, [messages])
 
     if (!chat?._id) {
-        return <div className="w-full h-screen flex justify-center items-center font-poppins text-off-white text-xl">
+        return <div className="w-full h-dvh flex justify-center items-center font-poppins text-off-white text-xl">
             No Chat Found.
         </div>
     }
 
     return (
         <>
-            <div className="w-full h-screen flex justify-center items-center">
+            <div className="w-full h-dvh flex justify-center items-center">
                 {/* pdf */}
                 <div className='hidden sm:flex w-4/10 h-full overflow-x-hidden overflow-y-auto style-scrollbar style-scrollbar justify-center items-center'>
                     {chat?.pdfUrl ? (
@@ -115,7 +115,7 @@ export default function ChatInterface({ chatId }) {
                 </div>
 
                 {/* chat */}
-                <div className='w-full sm:w-6/10 h-screen relative'>
+                <div className='w-full sm:w-6/10 h-dvh relative'>
                     <div className="mx-auto max-w-[900px] w-full h-full flex items-center justify-center overflow-auto">
                         <div className="w-full h-full flex flex-col gap-2 p-2 overflow-x-hidden overflow-y-auto pb-16 style-scrollbar">
                             {

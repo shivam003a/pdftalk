@@ -30,12 +30,12 @@ function Dashboard({ layout }) {
 
     return (
         <>
-            <div className="w-screen h-screen bg-secondary">
+            <div className="w-screen h-dvh bg-secondary">
                 <div className="w-full h-full mx-auto overflow-hidden flex items-center justify-center">
                     <Sidebar
                         chatId={chatId}
                     />
-                    <div className='w-full h-screen flex items-center justify-center'>
+                    <div className='w-full h-dvh flex items-center justify-center'>
                         {
                             layout === 'upload' ? (
                                 <UploadPdf />

@@ -22,7 +22,7 @@ export default function Modal({ children, open, setOpen, headerTitle, verticalAl
     }
     return (
         <div
-            className={`w-screen h-screen fixed top-0 bottom-0 left-0 right-0 overflow-hidden z-100 flex ${verticalAlign} justify-center backdrop-blur-sm bg-off-white/5`}
+            className={`w-screen h-dvh fixed top-0 bottom-0 left-0 right-0 overflow-hidden z-100 flex ${verticalAlign} justify-center backdrop-blur-sm bg-off-white/5`}
             onClick={() => setOpen(false)}
         >
             <div className="max-w-[900px] w-full max-h-[450px] h-full sm:w-[700px] bg-primary p-4 rounded-lg overflow-hidden m-2"

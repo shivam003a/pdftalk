@@ -104,7 +104,7 @@ export default function SignUp() {
 
     return (
         <>
-            <div className="w-screen h-screen bg-primary bg-no-repeat bg-cover flex items-center justify-center">
+            <div className="w-screen h-dvh bg-primary bg-no-repeat bg-cover flex items-center justify-center">
                 <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex items-center justify-center overflow-hidden">
                     {/* left div */}
                     <div className='w-full h-full flex-1/2 overflow-hidden hidden sm:flex'>

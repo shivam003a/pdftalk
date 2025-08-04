@@ -94,7 +94,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="w-screen h-screen bg-secondary bg-no-repeat bg-cover flex items-center justify-center">
+            <div className="w-screen h-dvh bg-secondary bg-no-repeat bg-cover flex items-center justify-center">
                 <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center bg-white overflow-hidden">
                     {/* left div */}
                     <div className='flex-1/2 w-full h-full overflow-hidden hidden sm:flex'>

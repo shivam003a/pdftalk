@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 export default function NotFound() {
     return (
         <>
-            <div className="w-screen h-screen bg-primary">
+            <div className="w-screen h-dvh bg-primary">
 
                 <Navbar />
                 {/* not found content */}

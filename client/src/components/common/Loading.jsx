@@ -1,7 +1,7 @@
 export default function Loading() {
     return (
         <>
-            <div className="h-screen w-screen overflow-hidden bg-primary flex justify-center items-center">
+            <div className="h-dvh w-screen overflow-hidden bg-primary flex justify-center items-center">
                 <img
                     src="/pdftalk.png"
                     alt="pdftalk"
