@@ -8,6 +8,7 @@ import { calculateMD5Hash } from "../utils/md5Generator.js";
 import fs from 'fs'
 
 export const uploadPdf = async (req, res) => {
+    let fileToDelete;
     try {
         const file = req.file;
         const { _id } = req.user;
@@ -15,6 +16,7 @@ export const uploadPdf = async (req, res) => {
         if (!file) {
             return res.error("no File Uploaded", null, 400)
         }
+        fileToDelete = file?.path
 
         // chec md5 hash to avoid same pdf uploaded multiple times
         const md5Hash = await calculateMD5Hash(file?.path)
@@ -62,6 +64,7 @@ export const uploadPdf = async (req, res) => {
 
     } catch (e) {
         console.error(e)
+        fs.unlinkSync(fileToDelete)
         return res.error(e?.message || "Internal server Error", null, 500)
     }
 }
