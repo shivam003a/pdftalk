@@ -2,6 +2,7 @@ import { Download, Loader, Send } from "lucide-react"
 import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import Markdown from 'markdown-to-jsx'
 
 export default function ChatInterface({ chatId }) {
     const [query, setQuery] = useState('')
@@ -125,7 +126,25 @@ export default function ChatInterface({ chatId }) {
                                         <div
                                             className={`bg-primary text-off-white p-2 max-w-8/10 font-poppins font-light rounded-lg text-sm whitespace-pre-wrap ${sender === 'ai' ? 'self-start' : 'self-end'}`}
                                             key={m?.id}>
-                                            {m.content}
+                                            <Markdown
+                                                options={{
+                                                    overrides: {
+                                                        a: {
+                                                            component: ({ children, ...props }) => (
+                                                                <a
+                                                                    {...props}
+                                                                    style={{ color: '#7dd181', textDecoration: 'underline' }}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    {children}
+                                                                </a>
+                                                            ),
+                                                        },
+                                                    },
+                                                }}>
+                                                {m.content}
+                                            </Markdown>
                                         </div>
                                     )
                                 })
