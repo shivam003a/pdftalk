@@ -33,6 +33,7 @@ export default function Sidebar({ chatId }) {
             navigate('/login', { replace: true })
             toast.dismiss(toastId)
             toast.success(result?.payload?.message)
+            localStorage.removeItem('noticeBarDismissed')
         } else {
             toast.dismiss(toastId)
             toast.error(result?.payload)
