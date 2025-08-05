@@ -29,8 +29,8 @@ export default function TopBarInfo() {
     return (
         <>
             <div className="w-full bg-s-text text-yellow-900 text-sm overflow-hidden">
-                <div className="max-w-[1200px] mx-auto flex items-center px-4 py-1 relative overflow-hidden">
-                    <div className="animate-marquee inline-block font-semibold text-red-600">
+                <div className="max-w-[1200px] mx-auto flex items-center justify-center px-4 py-1 relative overflow-hidden">
+                    <div className="w-full animate-marquee inline-block font-semibold text-red-600 text-nowrap">
                         {NOTICE_MESSAGE}
                     </div>
                     <button
