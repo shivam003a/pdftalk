@@ -32,3 +32,8 @@ chat-input::placeholder {
     transform: translateX(-100%);
   }
 }
+
+a {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
