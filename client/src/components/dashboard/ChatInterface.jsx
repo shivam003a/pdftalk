@@ -9,6 +9,7 @@ export default function ChatInterface({ chatId }) {
     const [loadingState, setLoadingState] = useState(false)
     const [messages, setMessages] = useState([])
     const messageRef = useRef(null)
+    const [mobile, setMobile] = useState(true)
     const { chat, loading, error } = useSelector((state) => state.chat)
 
     const handleAskQuery = async (e) => {
@@ -91,6 +92,25 @@ export default function ChatInterface({ chatId }) {
         }
     }, [messages])
 
+    useEffect(() => {
+        const checkMobile = () => {
+            if (window.innerWidth >= 640) {
+                setMobile(false)
+            } else {
+                setMobile(true)
+            }
+        }
+
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+
+        return () => {
+            window.removeEventListener('resize', checkMobile)
+        }
+    }, [])
+
+    useEffect
+
     if (!chat?._id) {
         return <div className="w-full h-dvh flex justify-center items-center font-poppins text-off-white text-xl">
             No Chat Found.
@@ -101,19 +121,20 @@ export default function ChatInterface({ chatId }) {
         <>
             <div className="w-full h-dvh flex justify-center items-center">
                 {/* pdf */}
-                <div className='hidden sm:flex w-4/10 h-full overflow-x-hidden overflow-y-auto style-scrollbar style-scrollbar justify-center items-center'>
-                    {chat?.pdfUrl ? (
-                        <iframe
-                            src={`${chat?.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
-                            className='w-full h-full'
-                            type="application/pdf"
-                            style={{ border: 'none' }}
-                            title='PDF Viewer'
-                        />
-                    ) : (
-                        <span className="font-poppins text-off-white">No PDF to load!</span>
-                    )}
-                </div>
+                {!mobile &&
+                    <div className='flex w-4/10 h-full overflow-x-hidden overflow-y-auto style-scrollbar style-scrollbar justify-center items-center'>
+                        {chat?.pdfUrl ? (
+                            <iframe
+                                src={`${chat?.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+                                className='w-full h-full'
+                                type="application/pdf"
+                                style={{ border: 'none' }}
+                                title='PDF Viewer'
+                            />
+                        ) : (
+                            <span className="font-poppins text-off-white">No PDF to load!</span>
+                        )}
+                    </div>}
 
                 {/* chat */}
                 <div className='w-full sm:w-6/10 h-dvh relative'>
@@ -125,7 +146,8 @@ export default function ChatInterface({ chatId }) {
                                     return (
                                         <div
                                             className={`bg-primary text-off-white p-2 max-w-8/10 font-poppins font-light rounded-lg text-sm whitespace-pre-wrap ${sender === 'ai' ? 'self-start' : 'self-end'}`}
-                                            key={m?.id}>
+                                            key={m?._id}
+                                        >
                                             <Markdown
                                                 options={{
                                                     overrides: {
