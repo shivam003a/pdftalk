@@ -75,7 +75,7 @@ export default function ChatInterface({ chatId }) {
 
         const link = document.createElement('a');
         link.href = url;
-        link.download = `${chat.chatName}.text`
+        link.download = `${chat.chatName}.txt`
         link.click();
 
         URL.revokeObjectURL(url)
