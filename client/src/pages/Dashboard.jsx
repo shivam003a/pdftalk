@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getChatById } from '../redux/slices/chat.slices';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet';
 
 function Dashboard({ layout }) {
     const { chatId } = useParams();
@@ -30,6 +31,14 @@ function Dashboard({ layout }) {
 
     return (
         <>
+            <Helmet>
+                <title>Dashboard – Chat with Your PDFs | PDFTalk AI</title>
+                <meta
+                    name="description"
+                    content="Chat with your uploaded PDFs in real time. AI-powered Retrieval-Augmented Generation (RAG) with LangChain, HuggingFace, and Pinecone for accurate answers."
+                />
+            </Helmet>
+
             <div className="w-screen h-dvh bg-secondary">
                 <div className="w-full h-full mx-auto overflow-hidden flex items-center justify-center">
                     <Sidebar

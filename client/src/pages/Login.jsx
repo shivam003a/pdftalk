@@ -9,6 +9,7 @@ import { loginZodSchema } from '../utils/zodSchema'
 import { z } from 'zod'
 import { useDispatch, useSelector } from 'react-redux'
 import { authSuccess, authFailed, setLoading } from '../redux/slices/auth.slices'
+import { Helmet } from 'react-helmet'
 
 const loginArray = [
     {
@@ -94,6 +95,13 @@ export default function Login() {
 
     return (
         <>
+            <Helmet>
+                <title>Login – PDFTalk AI</title>
+                <meta
+                    name="description"
+                    content="Login to PDFTalk AI to chat with your PDFs using Retrieval-Augmented Generation (RAG), LangChain, HuggingFace, and Pinecone."
+                />
+            </Helmet>
             <div className="w-screen h-dvh bg-secondary bg-no-repeat bg-cover flex items-center justify-center">
                 <div className="w-full h-full max-h-[900px] sm:h-9/10 max-w-[1200px] mx-auto flex flex-col sm:flex-row items-center justify-center bg-white overflow-hidden">
                     {/* left div */}
