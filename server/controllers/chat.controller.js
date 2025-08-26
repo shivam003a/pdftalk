@@ -1,6 +1,7 @@
 import { deletePineconeNamespace } from "../config/pinecone.config.js"
 import Chat from "../models/chat.model.js"
 import { v2 as cloudinary } from 'cloudinary'
+import { chatIdSchema } from "../utils/zodSchema.js"
 
 export const getAllChats = async (req, res) => {
     try {
@@ -20,7 +21,14 @@ export const getAllChats = async (req, res) => {
 export const getChatById = async (req, res) => {
     try {
         const { _id } = req.user
-        const { chatId } = req.params
+
+        // validate req.params
+        const parsed = chatIdSchema.safeParse(req.params)
+        if (!parsed?.success) {
+            const errorMsg = parsed.error.issues.map(err => err.message).join(", ");
+            return res.error(errorMsg, null, 400);
+        }
+        const { chatId } = parsed?.data
 
         if (!chatId) {
             return res.error("chatId is required", null, 400)
@@ -44,7 +52,14 @@ export const getChatById = async (req, res) => {
 export const deleteChatById = async (req, res) => {
     try {
         const { _id } = req.user
-        const { chatId } = req.params
+
+        // validate req.params
+        const parsed = chatIdSchema.safeParse(req.params)
+        if (!parsed?.success) {
+            const errorMsg = parsed.error.issues.map(err => err.message).join(", ");
+            return res.error(errorMsg, null, 400);
+        }
+        const { chatId } = parsed?.data
 
         if (!chatId) {
             return res.error("chatId is required", null, 400)

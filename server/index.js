@@ -10,7 +10,8 @@ import authRoutes from './routes/auth.route.js'
 import uploadRoutes from './routes/upload.route.js'
 import queryRoutes from './routes/query.route.js'
 import chatRoutes from './routes/chat.route.js'
-import { uploadLimiter, queryDailyLimiter } from './middlewares/rateLimit.middleware.js'
+import expressMongoSanitize from '@exortek/express-mongo-sanitize'
+import { globalLimiter } from './middlewares/rateLimit.middleware.js'
 
 // initialization
 const app = express()
@@ -24,6 +25,8 @@ const PORT = process.env.PORT || 5000
 // middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(globalLimiter)
+app.use(expressMongoSanitize());
 app.use(responseMiddleware)
 app.use(cookieParser())
 app.use(cors({
@@ -35,8 +38,8 @@ app.use(morgan('combined'))
 
 // routes
 app.use('/api/auth', authRoutes)
-app.use('/api/upload', uploadLimiter, uploadRoutes)
-app.use('/api/query', queryDailyLimiter, queryRoutes)
+app.use('/api/upload', uploadRoutes)
+app.use('/api/query', queryRoutes)
 app.use('/api/chat', chatRoutes)
 
 // listening to request

@@ -6,6 +6,7 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 import { upsertVectors } from "../config/pinecone.config.js";
 import { calculateMD5Hash } from "../utils/md5Generator.js";
 import fs from 'fs'
+import { uploadPdfSchema } from "../utils/zodSchema.js";
 
 export const uploadPdf = async (req, res) => {
     let fileToDelete;
@@ -18,10 +19,18 @@ export const uploadPdf = async (req, res) => {
         }
         fileToDelete = file?.path
 
+        // ✅ Validate file with Zod
+        const parsed = uploadPdfSchema.safeParse(file);
+        if (!parsed.success) {
+            const errorMsg = parsed.error.issues.map(err => err.message).join(", ");
+            return res.error(errorMsg, null, 400);
+        }
+
         // chec md5 hash to avoid same pdf uploaded multiple times
         const md5Hash = await calculateMD5Hash(file?.path)
         const existing = await Chat.findOne({ userId: _id, fileHash: md5Hash })
         if (existing) {
+            fs.unlinkSync(file.path);
             return res.error("Duplicate File Upload Detected", null, 409)
         }
 
@@ -53,7 +62,11 @@ export const uploadPdf = async (req, res) => {
         // console.log(pineconeVectors)
         const upsertResponse = await upsertVectors(pineconeVectors, namespace)
 
-        fs.unlinkSync(file.path)
+        // delete local file safely
+        if (fs.existsSync(file.path)) {
+            fs.unlinkSync(file.path);
+        }
+
 
         const chat = await Chat.create(chatObj)
         return res.success("Uploaded", {
@@ -64,7 +77,9 @@ export const uploadPdf = async (req, res) => {
 
     } catch (e) {
         console.error(e)
-        fs.unlinkSync(fileToDelete)
+        if (fileToDelete && fs.existsSync(fileToDelete)) {
+            fs.unlinkSync(fileToDelete);
+        }
         return res.error(e?.message || "Internal server Error", null, 500)
     }
 }

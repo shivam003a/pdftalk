@@ -1,4 +1,17 @@
-import rateLimit from 'express-rate-limit'
+import rateLimit, { ipKeyGenerator } from 'express-rate-limit'
+
+export const globalLimiter = rateLimit({
+    windowMs: 1 * 60 * 60 * 100,
+    max: 4,
+    message: {
+        success: false,
+        data: null,
+        message: "Too many requests, try again later."
+    },
+    standardHeaders: true,
+    legacyHeaders: false
+
+})
 
 export const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -27,6 +40,10 @@ export const registerLimiter = rateLimit({
 export const uploadLimiter = rateLimit({
     windowMs: 1 * 24 * 60 * 60 * 1000,
     max: 5,
+    keyGenerator: (req) => {
+        console.log(req?.user?._id)
+        return req?.user?._id || ipKeyGenerator(req.ip)
+    },
     message: {
         success: false,
         data: null,
@@ -39,6 +56,9 @@ export const uploadLimiter = rateLimit({
 export const queryDailyLimiter = rateLimit({
     windowMs: 24 * 60 * 60 * 1000,
     max: 30,
+    keyGenerator: (req) => {
+        return req?.user?._id || ipKeyGenerator(req.ip)
+    },
     message: {
         success: false,
         data: null,

@@ -2,12 +2,19 @@ import User from '../models/user.model.js'
 import { getCookieOptions } from '../utils/cookieOption.js'
 import { signJWT } from '../utils/jwtGenerator.js'
 import { comparePassword, hashPassword } from '../utils/passwordHashing.js'
+import { signinSchema, signupSchema } from '../utils/zodSchema.js'
 
 export const signup = async (req, res) => {
-    const { name, email, password } = req.body
-
     try {
-        // basic validation
+        // validate input
+        const parsed = signupSchema.safeParse(req.body);
+        if (!parsed.success) {
+            const errors = parsed?.error?.issues.map(err => err?.message)
+            const errorMessage = errors.join(", ");
+            return res.error(errorMessage, parsed?.error, 400)
+        }
+
+        const { name, email, password } = parsed.data
         if (!name || !email || !password) {
             return res.error("All Fields are required", null, 400)
         }
@@ -47,9 +54,16 @@ export const signup = async (req, res) => {
 }
 
 export const login = async (req, res) => {
-    const { email, password } = req.body
-
     try {
+        // validate input
+        const parsed = signinSchema.safeParse(req.body);
+        if (!parsed.success) {
+            const errors = parsed?.error?.issues.map(err => err?.message)
+            const errorMessage = errors.join(", ");
+            return res.error(errorMessage, parsed?.error, 400)
+        }
+
+        const { email, password } = parsed?.data
         // basic validation
         if (!email || !password) {
             return res.error("All Fields are required", null, 400)
@@ -97,6 +111,7 @@ export const logout = async (req, res) => {
         return res.success("User Logged Out", null, 200)
 
     } catch (e) {
+        console.log(e)
         return res.error(e?.message || "Internal Server Error", null, 500)
     }
 }

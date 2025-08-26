@@ -1,11 +1,20 @@
 import { llmCompletion } from '../config/llmCompletion.config.js';
 import { searchPinecone } from '../config/pinecone.config.js';
 import Chat from '../models/chat.model.js'
+import { queryPdfSchema } from '../utils/zodSchema.js';
 
 export const queryPdf = async (req, res) => {
     try {
-        const { query, chatId } = req.body;
         const { _id } = req.user;
+
+        // validate request body
+        const parsed = queryPdfSchema.safeParse(req.body)
+        if (!parsed?.success) {
+            const errorMsg = parsed.error.issues.map(err => err.message).join(", ");
+            return res.error(errorMsg, null, 400);
+        }
+
+        const { query, chatId } = parsed?.data;
 
         if (!query || !chatId) {
             return res.error("query and chatId must be present", null, 400)
