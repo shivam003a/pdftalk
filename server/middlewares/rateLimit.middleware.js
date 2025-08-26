@@ -2,7 +2,7 @@ import rateLimit, { ipKeyGenerator } from 'express-rate-limit'
 
 export const globalLimiter = rateLimit({
     windowMs: 1 * 60 * 60 * 100,
-    max: 4,
+    max: 500,
     message: {
         success: false,
         data: null,
@@ -55,7 +55,7 @@ export const uploadLimiter = rateLimit({
 
 export const queryDailyLimiter = rateLimit({
     windowMs: 24 * 60 * 60 * 1000,
-    max: 30,
+    max: 100,
     keyGenerator: (req) => {
         return req?.user?._id || ipKeyGenerator(req.ip)
     },
